@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  ult-dashboard-service:
+    # tells Compose to build the Dockerfile in the current directory
+    build: .
+    # Uses the image that was alread created
+    image: ult-dashboard
+
+    # Port-Mapping
+    ports:
+      - "8050:8050"
+
+    #  Volume Configurations
+    volumes:
+      # Map lokal ./data folder with  /app/data folder in the Container
+      - ./data:/app/data
+      # Map local ./saved_models folder mit /app/saved_models folder in the Container
+      - ./saved_models:/app/saved_models
+
+    stop_grace_period: 2s
